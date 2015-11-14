@@ -56,5 +56,31 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+var users = {
+  1: {
+    name: 'john',
+    email: 'john@email.com'
+  },
+  2: {
+    name: 'peter',
+    email: 'peter@email.com'
+  },
+  3: {
+    name: 'max',
+    email: 'max@email.com'
+  }
+};
+app.get('/solution-two/data', function(req, res) {
+  res.json(users);
+});
+app.get('/solution-two', function(req, res) {
+  res.render('solutionTwo', {
+    title: 'Express and Angular marriage'
+  })
+});
+function UserTwoCtrl($scope, $http) {
+  $http.get('/solution-two/data').success(function(data) {
+    $scope.users = data
+  })
+}
 module.exports = app;
