@@ -70,6 +70,7 @@ var users = {
     email: 'max@email.com'
   }
 };
+
 app.get('/solution-two/data', function(req, res) {
   res.json(users);
 });
@@ -78,9 +79,5 @@ app.get('/solution-two', function(req, res) {
     title: 'Express and Angular marriage'
   })
 });
-function UserTwoCtrl($scope, $http) {
-  $http.get('/solution-two/data').success(function(data) {
-    $scope.users = data
-  })
-}
+
 module.exports = app;
